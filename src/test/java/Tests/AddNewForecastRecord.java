@@ -13,7 +13,6 @@ public class AddNewForecastRecord extends BaseTest{
     private final By todaySelector = By.xpath("//span[@class='k-nav-today']");
     private final By inputTemperatureInCelsiusSelector = By.xpath("//td[@data-col-index='2']/div/span/input[@class='k-input k-formatted-value']");
     private final By inputSummarySelector = By.cssSelector(".k-textbox");
-    private final String summaryMessage = "This is a custom record";
     private final By updateButtonSelector = By.xpath("//td[@class='k-command-cell   ']/span/button[@class='k-button telerik-blazor k-button-icontext']/span[@class='k-icon k-i-save ']");
     private final By summaryCellSelector = By.xpath("//tr[@class='k-master-row  ' and @data-render-row-index='1']/td[@data-col-index='4']");
 
@@ -38,6 +37,7 @@ public class AddNewForecastRecord extends BaseTest{
 
         //      Typing a custom message
         WebElement inputSummary = driver.findElement(inputSummarySelector);
+        String summaryMessage = "This is a custom record";
         inputSummary.sendKeys(summaryMessage);
 
         //      Updating the row in the table
@@ -50,4 +50,5 @@ public class AddNewForecastRecord extends BaseTest{
         //      Comparing the message of input with the actual Summary message from the updated record
         Assertions.assertEquals(summaryMessage, summaryCell.getText());
     }
+
 }
